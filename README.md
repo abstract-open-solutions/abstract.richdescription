@@ -1,7 +1,6 @@
 Abstract Rich Description Extender
 ==================================
 
-
 Introduction
 ============
 
