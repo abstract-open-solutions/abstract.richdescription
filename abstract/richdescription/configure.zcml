@@ -2,10 +2,55 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="abstract.richdescription">
 
-  <five:registerPackage package="." initialize=".initialize" />
-
   <!-- -*- extra stuff goes here -*- -->
+  <includeDependencies package="." />
+  <i18n:registerTranslations directory="locales" />
+  
+  <!-- Register the installation GenericSetup extension profile -->
+  <genericsetup:registerProfile
+      name="default"
+      title="Abstract Rich Description"
+      directory="profiles/default"
+      description="Abstract Rich Description"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Abstract Rich Description Uninstall"
+      directory="profiles/uninstall"
+      description="Uninstall profile for Abstract Rich Description"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
+      
+  <!-- Schema Extender adapter -->
+  <adapter
+    factory=".extender.RichDescriptionExtender" 
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
+    name="richdescription-extender"/>
+
+  <adapter factory=".extender.RichDescriptionExtender" 
+    provides="archetypes.schemaextender.interfaces.ISchemaModifier"
+    name="richdescription-extender-hidedescription"
+  />
+    
+  <class class="Products.Archetypes.BaseObject.BaseObject">
+        <implements interface=".interfaces.IRichDescriptionExtenderable" />
+  </class>
+
+  <!-- Schema Extender Control Panel adapter -->
+  <adapter factory=".richdescriptionprefs.RichDescriptionControlPanelAdapter" />
+  
+  <browser:page
+       name="richdescription-controlpanel"
+       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+       class=".richdescriptionprefs.RichDescriptionForm"
+       layer=".interfaces.IAbstractRichDescriptionLayer"
+       permission="cmf.ManagePortal"
+  />
   
 </configure>

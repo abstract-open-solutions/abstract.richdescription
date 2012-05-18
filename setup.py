@@ -6,7 +6,7 @@ version = '0.1'
 setup(name='abstract.richdescription',
       version=version,
       description="Abstract Rich Description",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.md").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
@@ -15,8 +15,8 @@ setup(name='abstract.richdescription',
         "Programming Language :: Python",
         ],
       keywords='',
-      author='',
-      author_email='',
+      author='Biagio Grimaldi',
+      author_email='biagio.grimaldi@abstract.it',
       url='http://svn.plone.org/svn/collective/',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
@@ -26,6 +26,8 @@ setup(name='abstract.richdescription',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'Products.CMFCore',
+          'archetypes.schemaextender',
       ],
       entry_points="""
       # -*- Entry points: -*-
@@ -33,6 +35,6 @@ setup(name='abstract.richdescription',
       [z3c.autoinclude.plugin]
       target = plone
       """,
-      setup_requires=["PasteScript"],
+      setup_requires=[],
       paster_plugins=["ZopeSkel"],
       )
