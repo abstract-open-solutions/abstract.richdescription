@@ -3,6 +3,7 @@
   <object name="richdescription_properties" meta_type="Plone Property Sheet">
     <!-- some properties are set in setuphandlers -->
     <!-- XXX: usare plone.app.registry -->
+    <!-- con plone.app.registry abbiamo un problema con i tag <script> del widget -->
     <property name="title">Abstract Rich Description Properties</property>
     <property name="allowed_types" type="lines" purge="False">
         <element value="Document" />
