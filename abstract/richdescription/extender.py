@@ -5,21 +5,21 @@ from zope.interface import implements
 
 from Products.Archetypes import atapi
 from Products.ATContentTypes.configuration import zconf
-from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from archetypes.schemaextender.interfaces import (IBrowserLayerAwareExtender,
                                                 IOrderableSchemaExtender)
 from archetypes.schemaextender.interfaces import ISchemaModifier
 from archetypes.schemaextender.field import ExtensionField
 
+from plone.registry.interfaces import IRegistry
+
 from abstract.richdescription import MessageFactory as _
-from abstract.richdescription.richdescriptionprefs import IRichDescriptionForm
 from abstract.richdescription.interfaces import (IAbstractRichDescriptionLayer,
                                             IRichDescriptionExtenderable)
 
 
 class RichTextField(ExtensionField, atapi.TextField):
-    """ rich text field extension """
+    """rich text field extension"""
 
 
 class RichDescriptionExtender(object):
@@ -35,9 +35,6 @@ class RichDescriptionExtender(object):
             searchable=True,
             storage=atapi.AnnotationStorage(migrate=True),
             validators=('isTidyHtmlWithCleanup',),
-            # XXX: perche questo override?
-            # nel caso sia utile meglio trovare un nome migliore
-            accessor='Rich',
             default_output_type='text/x-html-safe',
             widget=atapi.RichWidget(
                     description='',
@@ -51,12 +48,11 @@ class RichDescriptionExtender(object):
         self.context = context
 
     def apply_extender(self):
-        portal = getUtility(IPloneSiteRoot)
-        ard_prefs = IRichDescriptionForm(portal)
-        if ard_prefs.richdescription_properties is not None:
-            portal_type = getattr(self.context, 'portal_type', None)
-            if portal_type in ard_prefs.allowed_types:
-                return True
+        registry = getUtility(IRegistry)
+        allowed_types = registry.get('abstract.richdescription.interfaces.IRichDescriptionSettings.allowed_types', [])
+        portal_type = getattr(self.context, 'portal_type', None)
+        if portal_type in allowed_types:
+            return True
         return False
 
     def fiddle(self, schema):

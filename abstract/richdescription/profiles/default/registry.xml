@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<registry>
+    <records interface="abstract.richdescription.interfaces.IRichDescriptionSettings">
+      <value key="allowed_types" purge="false">
+        <element>Document</element>
+        <element>Folder</element>
+      </value>
+    </records>
+</registry>

@@ -41,16 +41,5 @@
   <class class="Products.Archetypes.BaseObject.BaseObject">
         <implements interface=".interfaces.IRichDescriptionExtenderable" />
   </class>
-
-  <!-- Schema Extender Control Panel adapter -->
-  <adapter factory=".richdescriptionprefs.RichDescriptionControlPanelAdapter" />
-  
-  <browser:page
-       name="richdescription-controlpanel"
-       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-       class=".richdescriptionprefs.RichDescriptionForm"
-       layer=".interfaces.IAbstractRichDescriptionLayer"
-       permission="cmf.ManagePortal"
-  />
   
 </configure>
