@@ -35,6 +35,8 @@ class RichDescriptionExtender(object):
             searchable=True,
             storage=atapi.AnnotationStorage(migrate=True),
             validators=('isTidyHtmlWithCleanup',),
+            # XXX: perche questo override?
+            # nel caso sia utile meglio trovare un nome migliore
             accessor='Rich',
             default_output_type='text/x-html-safe',
             widget=atapi.RichWidget(

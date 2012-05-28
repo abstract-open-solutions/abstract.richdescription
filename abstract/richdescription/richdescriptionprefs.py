@@ -39,6 +39,7 @@ class RichDescriptionControlPanelAdapter(SchemaAdapterBase):
 
     def __init__(self, context):
         super(RichDescriptionControlPanelAdapter, self).__init__(context)
+        # XXX: usare plone.app.registry
         pprop = getUtility(IPropertiesTool)
         self.richdescription_properties = getattr(pprop,
                                 'richdescription_properties', None)
