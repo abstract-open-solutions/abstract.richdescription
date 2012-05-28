@@ -11,9 +11,10 @@ from archetypes.schemaextender.interfaces import (IBrowserLayerAwareExtender,
 from archetypes.schemaextender.interfaces import ISchemaModifier
 from archetypes.schemaextender.field import ExtensionField
 
-from plone.registry.interfaces import IRegistry
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from abstract.richdescription import MessageFactory as _
+from abstract.richdescription.richdescriptionprefs import IRichDescriptionForm
 from abstract.richdescription.interfaces import (IAbstractRichDescriptionLayer,
                                             IRichDescriptionExtenderable)
 
@@ -48,11 +49,12 @@ class RichDescriptionExtender(object):
         self.context = context
 
     def apply_extender(self):
-        registry = getUtility(IRegistry)
-        allowed_types = registry.get('abstract.richdescription.interfaces.IRichDescriptionSettings.allowed_types', [])
-        portal_type = getattr(self.context, 'portal_type', None)
-        if portal_type in allowed_types:
-            return True
+        portal = getUtility(IPloneSiteRoot)
+        ard_prefs = IRichDescriptionForm(portal)
+        if ard_prefs.richdescription_properties is not None:
+            portal_type = getattr(self.context, 'portal_type', None)
+            if portal_type in ard_prefs.allowed_types:
+                return True
         return False
 
     def fiddle(self, schema):

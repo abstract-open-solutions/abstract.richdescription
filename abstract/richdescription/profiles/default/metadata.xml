@@ -2,4 +2,5 @@
 <metadata>
   <version>0.1</version>
   <!-- XXX: non c'è nulla da installare? -->
+  <!-- le dipendenze sono pacchetti che non si installano da portal_quickinstaller -->
 </metadata>

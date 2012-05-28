@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="ard-uninstall-configlet"
+              version="20120518-1"
+              handler="abstract.richdescription.setuphandlers.removeConfiglet"
+              title="Remove Rich Description configlet">Removes the rich description configlet</import-step>
+</import-steps>

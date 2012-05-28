@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+       i18n:domain="abstract.richdescription">
+  <configlet title="Abstract Rich Description Settings"
+             action_id="AbstractRichDescription"
+             appId="abstract.richdescription"
+             category="Products"
+             conditional_expression=""
+             icon_expr="string:${portal_url}/topic_icon.png"
+             url_expr="string:${portal_url}/@@richdescription-controlpanel"
+             visible="True"
+             i18n:attributes="title">
+    <permission>Manage Portal</permission>
+  </configlet>
+</object>
