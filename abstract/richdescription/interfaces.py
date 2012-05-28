@@ -6,9 +6,7 @@ from abstract.richdescription import MessageFactory as _
 
 
 class IRichDescriptionSettings(Interface):
-    """IRichDescriptionSettings base settings for collective.geo
-       describe default property used to display the map
-       widgets in Plone
+    """IRichDescriptionSettings base settings for rich description
     """
     allowed_types = schema.List(
         title=_(u'Content types with rich description'),
