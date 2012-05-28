@@ -13,6 +13,7 @@ How it works
 ============
 
 All object types are marked as "extendarable" by custom interface IRichDescriptionExtenderable::
+
     <class class="Products.Archetypes.BaseObject.BaseObject">
           <implements interface=".interfaces.IRichDescriptionExtenderable" />
     </class>
@@ -27,7 +28,7 @@ Field "description" will be hidden automatically.
 How to use
 ==========
 
-This package provides a configlet that makes possibile to choose the set 
+This package provides a configlet that makes possibile to choose the set
 of portal-types which to attach the new field to (roo-url/@@richdescription-controlpanel).
 
 
