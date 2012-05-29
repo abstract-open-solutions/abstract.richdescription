@@ -5,3 +5,10 @@ Changelog
 -------------------
 
 - Initial release
+
+
+1.0
+---
+
+1. Added viewlet for rich-description field (visible below object title)
+2. Added event to set standard description field with html stripped rich-description value

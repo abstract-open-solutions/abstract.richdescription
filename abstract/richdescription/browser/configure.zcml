@@ -1,0 +1,26 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="abstract.richdescription">
+
+    <!-- Schema Extender Control Panel adapter -->
+    <adapter factory=".richdescriptionprefs.RichDescriptionControlPanelAdapter" />
+
+    <browser:page
+           name="richdescription-controlpanel"
+           for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+           class=".richdescriptionprefs.RichDescriptionForm"
+           layer="..interfaces.IAbstractRichDescriptionLayer"
+           permission="cmf.ManagePortal"
+    />
+    
+    <!-- Render rich-description viewlet -->
+    <browser:viewlet
+        name="abstract.richdescription"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+        class=".viewlet.RichDescriptionViewlet"
+        layer="..interfaces.IAbstractRichDescriptionLayer"
+        permission="zope2.View"
+        />
+  
+</configure>

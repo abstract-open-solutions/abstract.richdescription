@@ -10,6 +10,8 @@
   <includeDependencies package="." />
   <i18n:registerTranslations directory="locales" />
   
+  <include package=".browser" />
+  
   <!-- Register the installation GenericSetup extension profile -->
   <genericsetup:registerProfile
       name="default"
@@ -42,15 +44,10 @@
         <implements interface=".interfaces.IRichDescriptionExtenderable" />
   </class>
   
-  <!-- Schema Extender Control Panel adapter -->
-  <adapter factory=".richdescriptionprefs.RichDescriptionControlPanelAdapter" />
-
-  <browser:page
-         name="richdescription-controlpanel"
-         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-         class=".richdescriptionprefs.RichDescriptionForm"
-         layer=".interfaces.IAbstractRichDescriptionLayer"
-         permission="cmf.ManagePortal"
-  />
+  <!-- Event subscribers -->
+  <subscriber
+      for=".interfaces.IRichDescriptionExtenderable
+           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+      handler=".events.set_plain_description" />
 
 </configure>

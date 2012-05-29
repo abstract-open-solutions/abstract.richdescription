@@ -14,7 +14,7 @@ from archetypes.schemaextender.field import ExtensionField
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from abstract.richdescription import MessageFactory as _
-from abstract.richdescription.richdescriptionprefs import IRichDescriptionForm
+from abstract.richdescription.browser.richdescriptionprefs import IRichDescriptionForm
 from abstract.richdescription.interfaces import (IAbstractRichDescriptionLayer,
                                             IRichDescriptionExtenderable)
 
