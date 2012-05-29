@@ -3,7 +3,7 @@ from zope.component import getUtility
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.utils import getToolByName
 
-from abstract.richdescription.richdescriptionprefs import IRichDescriptionForm
+from abstract.richdescription.browser.richdescriptionprefs import IRichDescriptionForm
 
 
 def set_plain_description(obj, evt):
