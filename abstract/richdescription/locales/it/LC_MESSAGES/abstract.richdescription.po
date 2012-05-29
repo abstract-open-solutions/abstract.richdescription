@@ -20,9 +20,9 @@ msgstr "Lista di tipi"
 
 #: ../interfaces.py:14
 msgid "Content types with rich description"
-msgstr "Tipi con descrizione ricca"
+msgstr "Tipi con descrizione"
 
 #: ../extender.py:41
 msgid "Rich description"
-msgstr "Descrizione ricca"
+msgstr "Descrizione"
 
