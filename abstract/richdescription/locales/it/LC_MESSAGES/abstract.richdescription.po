@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2012-05-28 14:34+0000\n"
+"POT-Creation-Date: 2012-05-29 14:45+0000\n"
 "PO-Revision-Date: 2012-05-28 14:31+0000\n"
 "Last-Translator: BIAGIO GRIMALDI <biagio@abstract.it>\n"
 "Language-Team: IT <LL@li.org>\n"
@@ -14,15 +14,31 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: abstract.richdescription\n"
 
-#: ../interfaces.py:17
-msgid "A list of types"
-msgstr "Lista di tipi"
+#: ../profiles/default/controlpanel.xml
+msgid "Abstract Rich Description Settings"
+msgstr "Configurazioni Rich Description"
 
-#: ../interfaces.py:14
-msgid "Content types with rich description"
-msgstr "Tipi con descrizione"
+#: ../browser/richdescriptionprefs.py:26
+msgid "Portal types"
+msgstr "Tipi"
 
-#: ../extender.py:41
+#: ../browser/richdescriptionprefs.py:27
+msgid "Portal types rich description may be attached to."
+msgstr "Tipi con la rich description"
+
+#: ../browser/richdescriptionprefs.py:66
+msgid "Rich Description Settings"
+msgstr "Configurazioni Rich Description"
+
+#: ../browser/richdescriptionprefs.py:64
+msgid "Rich Description Settings Form"
+msgstr "Form Configurazioni Rich Description"
+
+#: ../extender.py:42
 msgid "Rich description"
 msgstr "Descrizione"
+
+#: ../browser/richdescriptionprefs.py:65
+msgid "Select properties for Rich Description"
+msgstr "Seleziona le opzioni per la Rich Description"
 

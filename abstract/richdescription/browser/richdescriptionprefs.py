@@ -24,7 +24,7 @@ class IRichDescriptionForm(Interface):
     """ The view for RichDescription  prefs form. """
 
     allowed_types = schema.Tuple(title=_(u'Portal types'),
-          description=_(u'Portal types lead image may be attached to.'),
+          description=_(u'Portal types rich description may be attached to.'),
           missing_value=tuple(),
           value_type=schema.Choice(
                    vocabulary="plone.app.vocabularies.UserFriendlyTypes"),

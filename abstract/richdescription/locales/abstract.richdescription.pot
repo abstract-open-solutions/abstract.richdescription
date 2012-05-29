@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-05-28 14:34+0000\n"
+"POT-Creation-Date: 2012-05-29 14:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,31 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: abstract.richdescription\n"
 
-#: ../interfaces.py:17
-msgid "A list of types"
+#: ../profiles/default/controlpanel.xml
+msgid "Abstract Rich Description Settings"
 msgstr ""
 
-#: ../interfaces.py:14
-msgid "Content types with rich description"
+#: ../browser/richdescriptionprefs.py:26
+msgid "Portal types"
 msgstr ""
 
-#: ../extender.py:41
+#: ../browser/richdescriptionprefs.py:27
+msgid "Portal types lead image may be attached to."
+msgstr ""
+
+#: ../browser/richdescriptionprefs.py:66
+msgid "Rich Description Settings"
+msgstr ""
+
+#: ../browser/richdescriptionprefs.py:64
+msgid "Rich Description Settings Form"
+msgstr ""
+
+#: ../extender.py:42
 msgid "Rich description"
+msgstr ""
+
+#: ../browser/richdescriptionprefs.py:65
+msgid "Select properties for Rich Description"
 msgstr ""
 

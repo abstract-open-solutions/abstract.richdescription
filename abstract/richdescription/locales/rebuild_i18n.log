@@ -1,0 +1,8 @@
+..//browser/templates/rich_description.pt:6:5:
+-ERROR- - i18n:translate missing for this:
+"""
+rich description
+"""
+-------------------------------------------------------------------------------
+Processing of ..//browser/templates/rich_description.pt finished. (0 warnings, 1 errors)
+===============================================================================
