@@ -1,22 +1,20 @@
 # -*- coding: utf-8 -*-
-
 from zope.component import adapts, getUtility
 from zope.interface import implements
 
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Archetypes import atapi
 from Products.ATContentTypes.configuration import zconf
 
-from archetypes.schemaextender.interfaces import (IBrowserLayerAwareExtender,
-                                                IOrderableSchemaExtender)
+from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
+from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
 from archetypes.schemaextender.interfaces import ISchemaModifier
 from archetypes.schemaextender.field import ExtensionField
 
-from Products.CMFPlone.interfaces import IPloneSiteRoot
-
-from abstract.richdescription import MessageFactory as _
-from abstract.richdescription.browser.richdescriptionprefs import IRichDescriptionForm
-from abstract.richdescription.interfaces import (IAbstractRichDescriptionLayer,
-                                            IRichDescriptionExtenderable)
+from browser.richdescriptionprefs import IRichDescriptionForm
+from interfaces import IAbstractRichDescriptionLayer
+from interfaces import IRichDescriptionExtenderable
+from . import MessageFactory as _
 
 
 class RichTextField(ExtensionField, atapi.TextField):

@@ -1,8 +1,5 @@
-<div id="rich-description-field"
-     tal:condition="view/is_available">
-     
-     <tal:description tal:replace="structure view/getRich_description">
+<div id="rich-description-field" tal:condition="view/is_available">
+    <tal:description tal:replace="structure view/getRich_description">
         rich description
-     </tal:description>
-
+    </tal:description>
 </div>

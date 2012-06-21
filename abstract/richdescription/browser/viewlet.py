@@ -4,7 +4,7 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.layout.viewlets import ViewletBase
 
-from abstract.richdescription.browser.richdescriptionprefs import IRichDescriptionForm
+from richdescriptionprefs import IRichDescriptionForm
 
 
 class RichDescriptionViewlet(ViewletBase):

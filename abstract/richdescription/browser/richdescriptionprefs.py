@@ -1,23 +1,24 @@
+from zope import schema
 from zope.interface import Interface, implements
 from zope.component import adapts
 from zope.component import getUtility
 from zope.component import getMultiAdapter
 
+from zope.event import notify
 from zope.formlib import form
-from zope import schema
+
 from Products.CMFDefault.formlib.schema import SchemaAdapterBase
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.interfaces import IPropertiesTool
-from plone.app.controlpanel.form import ControlPanelForm
-from plone.app.form.validators import null_validator
-
 from Products.statusmessages.interfaces import IStatusMessage
+
 from plone.protect import CheckAuthenticator
-from zope.event import notify
+from plone.app.form.validators import null_validator
+from plone.app.controlpanel.form import ControlPanelForm
 from plone.app.controlpanel.events import ConfigurationChangedEvent
 
 from Products.CMFPlone import PloneMessageFactory as _p
-from abstract.richdescription import MessageFactory as _
+from .. import MessageFactory as _
 
 
 class IRichDescriptionForm(Interface):

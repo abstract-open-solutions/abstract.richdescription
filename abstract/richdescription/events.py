@@ -3,10 +3,10 @@ from zope.component import getUtility
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.utils import getToolByName
 
-from abstract.richdescription.browser.richdescriptionprefs import IRichDescriptionForm
+from browser.richdescriptionprefs import IRichDescriptionForm
 
 
-def set_plain_description(obj, evt):
+def set_plain_description(obj, evt):  # pylint: disable=W0613
     """
     if obj has "rich_description" field, we have to:
     1. strip html tags from rich_description
@@ -21,7 +21,7 @@ def set_plain_description(obj, evt):
             field = obj.getField('rich_description')
             if field:
                 rich_description = field.get(obj)
-            
+
             if rich_description:
                 transforms = getToolByName(portal, 'portal_transforms')
                 data = transforms.convert('html_to_text', rich_description)
