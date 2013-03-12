@@ -13,6 +13,14 @@
            layer="..interfaces.IAbstractRichDescriptionLayer"
            permission="cmf.ManagePortal"
     />
+
+    <browser:page
+           name="richdescription-fix-empty"
+           for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+           class=".fix.FixEmpty"
+           layer="..interfaces.IAbstractRichDescriptionLayer"
+           permission="cmf.ManagePortal"
+    />
     
     <!-- Render rich-description viewlet -->
     <browser:viewlet
