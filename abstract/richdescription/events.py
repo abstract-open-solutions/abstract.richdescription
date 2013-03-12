@@ -22,9 +22,10 @@ def set_plain_description(obj, evt):  # pylint: disable=W0613
             if field:
                 rich_description = field.get(obj)
 
+            plain_text = ''
             if rich_description:
                 transforms = getToolByName(portal, 'portal_transforms')
                 data = transforms.convert('html_to_text', rich_description)
                 plain_text = data.getData()
-                obj.setDescription(plain_text)
-                obj.reindexObject()
+            obj.setDescription(plain_text)
+            obj.reindexObject(idxs=['Description'])
