@@ -29,7 +29,13 @@ How to use
 ==========
 
 This package provides a configlet that makes possibile to choose the set
-of portal-types which to attach the new field to (roo-url/@@richdescription-controlpanel).
+of portal-types which to attach the new field to (PloneSite/@@richdescription-controlpanel).
+
+Upgrading to 1.0.1
+==================
+
+If you used v1.0 you should run the view `PloneSite/@@richdescription-fix-empty` to fix those objects
+that have an empty `Description` indexed due to a bug in version < 1.0.1.
 
 
 Dependencies

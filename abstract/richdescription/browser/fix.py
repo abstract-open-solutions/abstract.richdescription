@@ -4,6 +4,10 @@ from Products.Five.browser import BrowserView
 
 
 class FixEmpty(BrowserView):
+    """ View for fixing those objects that had a rich description
+    but no longer have. Running this view is required if you installed
+    and used this package previous to version 1.0.1
+    """
 
     def __call__(self):
         portal = self.context
