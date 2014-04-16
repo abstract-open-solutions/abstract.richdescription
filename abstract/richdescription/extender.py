@@ -14,7 +14,7 @@ from archetypes.schemaextender.field import ExtensionField
 from browser.richdescriptionprefs import IRichDescriptionForm
 from interfaces import IAbstractRichDescriptionLayer
 from interfaces import IRichDescriptionExtenderable
-from . import MessageFactory as _
+from Products.Archetypes import PloneMessageFactory as _PMF
 
 
 class RichTextField(ExtensionField, atapi.TextField):
@@ -23,23 +23,26 @@ class RichTextField(ExtensionField, atapi.TextField):
 
 class RichDescriptionExtender(object):
     adapts(IRichDescriptionExtenderable)
-    implements(ISchemaModifier, IOrderableSchemaExtender,
-                                            IBrowserLayerAwareExtender)
+    implements(ISchemaModifier,
+               IOrderableSchemaExtender,
+               IBrowserLayerAwareExtender)
 
     layer = IAbstractRichDescriptionLayer
 
     fields = [
-        RichTextField('rich_description',
+        RichTextField(
+            'rich_description',
             required=False,
             searchable=True,
             storage=atapi.AnnotationStorage(migrate=True),
             validators=('isTidyHtmlWithCleanup',),
             default_output_type='text/x-html-safe',
             widget=atapi.RichWidget(
-                    description='',
-                    label=_(u'Rich description'),
-                    rows=25,
-                    allow_file_upload=zconf.ATDocument.allow_document_upload),
+                description='',
+                label=_PMF(u'Description'),
+                rows=25,
+                allow_file_upload=zconf.ATDocument.allow_document_upload
+            ),
         ),
     ]
 
