@@ -1,0 +1,21 @@
+Changelog
+=========
+
+1.1 (2014-07-28)
+----------------
+
+- Moved docs/HISTORY.txt to CHANGES.txt
+  [gborelli]
+- Minor fix
+  [gborelli]
+
+
+1.0.1 (2013-03-12)
+------------------
+
+- Added viewlet for rich-description field (visible below object title)
+   [biagio]
+
+- Added event to set standard description field with html stripped
+   rich-description value
+   [biagio]

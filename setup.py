@@ -1,13 +1,13 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0.1'
+version = '1.1'
 
 setup(name='abstract.richdescription',
       version=version,
       description="Abstract Rich Description",
       long_description=open("README.md").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+                       open("CHANGES.txt").read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
