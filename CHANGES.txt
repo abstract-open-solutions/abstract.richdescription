@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.2 (1014-11-10)
+----------------
+- Add behavior for dexterity types
+- filter content types dexterity from configlet
+
 1.1 (2014-07-28)
 ----------------
 
