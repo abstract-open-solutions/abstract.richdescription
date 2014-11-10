@@ -24,12 +24,14 @@ from .. import MessageFactory as _
 class IRichDescriptionForm(Interface):
     """ The view for RichDescription  prefs form. """
 
-    allowed_types = schema.Tuple(title=_(u'Portal types'),
-          description=_(u'Portal types rich description may be attached to.'),
-          missing_value=tuple(),
-          value_type=schema.Choice(
-                   vocabulary="plone.app.vocabularies.UserFriendlyTypes"),
-          required=False)
+    allowed_types = schema.Tuple(
+        title=_(u'Portal types'),
+        description=_(u'Portal types rich description may be attached to.'),
+        missing_value=tuple(),
+        value_type=schema.Choice(
+            vocabulary="abstract.richdescription.archetypesvocabulary"),
+        required=False
+    )
 
 
 class RichDescriptionControlPanelAdapter(SchemaAdapterBase):
@@ -41,10 +43,11 @@ class RichDescriptionControlPanelAdapter(SchemaAdapterBase):
     def __init__(self, context):
         super(RichDescriptionControlPanelAdapter, self).__init__(context)
         # XXX: usare plone.app.registry
-        # con plone.app.registry abbiamo un problema con i tag <script> del widget
+        # con plone.app.registry abbiamo un problema con i tag <script>
+        # del widget
         pprop = getUtility(IPropertiesTool)
-        self.richdescription_properties = getattr(pprop,
-                                'richdescription_properties', None)
+        self.richdescription_properties = getattr(
+            pprop, 'richdescription_properties', None)
         self.context = context
 
     def get_allowed_types(self):

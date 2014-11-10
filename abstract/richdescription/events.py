@@ -2,7 +2,8 @@
 from zope.component import getUtility
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.utils import getToolByName
-
+from plone.dexterity.interfaces import IDexterityContent
+from abstract.richdescription.behaviors import IRichDescriptionBehavior
 from browser.richdescriptionprefs import IRichDescriptionForm
 
 
@@ -18,9 +19,14 @@ def set_plain_description(obj, evt):  # pylint: disable=W0613
         portal_type = getattr(obj, 'portal_type', None)
         if portal_type in ard_prefs.allowed_types:
             rich_description = ''
-            field = obj.getField('rich_description')
-            if field:
-                rich_description = field.get(obj)
+            if IDexterityContent.providedBy(obj):
+                adapts = IRichDescriptionBehavior(obj, None)
+                if adapts:
+                    rich_description = adapts.rich_description.output
+            else:
+                field = obj.getField('rich_description')
+                if field:
+                    rich_description = field.get(obj)
 
             plain_text = ''
             if rich_description:

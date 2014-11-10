@@ -21,7 +21,7 @@
            layer="..interfaces.IAbstractRichDescriptionLayer"
            permission="cmf.ManagePortal"
     />
-    
+
     <!-- Render rich-description viewlet -->
     <browser:viewlet
         name="abstract.richdescription"
@@ -30,5 +30,5 @@
         layer="..interfaces.IAbstractRichDescriptionLayer"
         permission="zope2.View"
         />
-  
+
 </configure>

@@ -28,6 +28,7 @@ setup(name='abstract.richdescription',
           # -*- Extra requirements: -*-
           'Products.CMFCore',
           'archetypes.schemaextender',
+          'plone.app.contenttypes',
       ],
       entry_points="""
       # -*- Entry points: -*-

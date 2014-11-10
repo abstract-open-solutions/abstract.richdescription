@@ -3,7 +3,8 @@ from zope.component import getUtility
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.layout.viewlets import ViewletBase
-
+from plone.dexterity.interfaces import IDexterityContent
+from abstract.richdescription.behaviors import IRichDescriptionBehavior
 from richdescriptionprefs import IRichDescriptionForm
 
 
@@ -22,7 +23,15 @@ class RichDescriptionViewlet(ViewletBase):
 
     def getRich_description(self):
         rich_description = ''
-        field = self.context.getField('rich_description')
-        if field:
-            rich_description = field.get(self.context)
+        field = None
+
+        if IDexterityContent.providedBy(self.context):
+            adapts = IRichDescriptionBehavior(self.context, None)
+            if adapts:
+                rich_description = adapts.rich_description.output
+        else:
+            field = self.context.getField('rich_description')
+            if field:
+                rich_description = field.get(self.context)
+
         return rich_description

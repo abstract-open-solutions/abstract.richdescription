@@ -4,14 +4,16 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="abstract.richdescription">
 
   <!-- -*- extra stuff goes here -*- -->
   <includeDependencies package="." />
   <i18n:registerTranslations directory="locales" />
-  
+
   <include package=".browser" />
-  
+
   <!-- Register the installation GenericSetup extension profile -->
   <genericsetup:registerProfile
       name="default"
@@ -28,26 +30,50 @@
       description="Uninstall profile for Abstract Rich Description"
       provides="Products.GenericSetup.interfaces.EXTENSION"
   />
-      
+
   <!-- Schema Extender adapter -->
   <adapter
-    factory=".extender.RichDescriptionExtender" 
+    factory=".extender.RichDescriptionExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
     name="richdescription-extender"/>
 
-  <adapter factory=".extender.RichDescriptionExtender" 
+  <adapter factory=".extender.RichDescriptionExtender"
     provides="archetypes.schemaextender.interfaces.ISchemaModifier"
     name="richdescription-extender-hidedescription"
   />
-    
+
   <class class="Products.Archetypes.BaseObject.BaseObject">
         <implements interface=".interfaces.IRichDescriptionExtenderable" />
   </class>
-  
+
+  <class class="plone.dexterity.interfaces.IDexterityContent"
+         zcml:condition="installed plone.app.contenttypes">
+        <implements interface=".interfaces.IRichDescriptionExtenderable" />
+  </class>
+
   <!-- Event subscribers -->
   <subscriber
       for=".interfaces.IRichDescriptionExtenderable
            zope.lifecycleevent.interfaces.IObjectModifiedEvent"
       handler=".events.set_plain_description" />
+
+  <!-- behavior -->
+  <include package="plone.behavior" file="meta.zcml"
+           zcml:condition="installed plone.app.contenttypes"/>
+
+  <plone:behavior
+    title="Rich Description behavior"
+    description="Adds rich description behavior on content"
+    provides=".behaviors.IRichDescriptionBehavior"
+    factory=".behaviors.RichDescriptionBehavior"
+    for="plone.dexterity.interfaces.IDexterityContent"
+    marker=".behaviors.IRichDescriptionBehavior"
+    zcml:condition="installed plone.app.contenttypes"
+  />
+
+  <utility
+    component=".vocabularies.ArcheTypesVocabularyFactory"
+    name="abstract.richdescription.archetypesvocabulary"
+  />
 
 </configure>
