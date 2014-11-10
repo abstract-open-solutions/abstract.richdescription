@@ -5,9 +5,17 @@ from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 from zope.site.hooks import getSite
 from zope.i18n import translate
-from zope.component import getAllUtilitiesRegisteredFor
+from plone.app.vocabularies.types import BAD_TYPES
 from plone.dexterity.interfaces import IDexterityFTI
 from Products.CMFCore.utils import getToolByName
+
+import pkg_resources
+try:
+    pkg_resources.get_distribution('plone.dexterity')
+except pkg_resources.DistributionNotFound:
+    HAS_DEXTERITY = False
+else:
+    HAS_DEXTERITY = True
 
 
 class ArcheTypesVocabulary(object):
@@ -15,26 +23,23 @@ class ArcheTypesVocabulary(object):
 
     def __call__(self, context):
         site = getSite()
-        ptool = getToolByName(site, 'plone_utils', None)
         ttool = getToolByName(site, 'portal_types', None)
-
-        # TODO: check is plone.app.contenttypes is installed
-        ftis = getAllUtilitiesRegisteredFor(IDexterityFTI)
-        dexterity_types = [fti.__name__ for fti in ftis]
-
-        if ptool is None or ttool is None:
+        if ttool is None:
             return SimpleVocabulary([])
-
+        items = []
         request = aq_get(ttool, 'REQUEST', None)
-        items = [(translate(ttool[t].Title(), context=request), t)
-                 for t in ptool.getUserFriendlyTypes()
-                 if not t in dexterity_types]
+        for k, v in ttool.items():
+            if HAS_DEXTERITY:
+                if IDexterityFTI.providedBy(v):
+                    continue
 
-        items.sort()
-        items = [
-            SimpleTerm(i[1], i[1], i[0]) for i in items
-        ]
+        if k not in BAD_TYPES:
+            items.append(
+                (k, translate(v.Title(), context=request))
+            )
 
+        items.sort(key=lambda x: x[1])
+        items = [SimpleTerm(i[0], i[0], i[1]) for i in items]
         return SimpleVocabulary(items)
 
 ArcheTypesVocabularyFactory = ArcheTypesVocabulary()

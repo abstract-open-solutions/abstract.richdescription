@@ -59,7 +59,7 @@
 
   <!-- behavior -->
   <include package="plone.behavior" file="meta.zcml"
-           zcml:condition="installed plone.app.contenttypes"/>
+           zcml:condition="installed plone.dexterity"/>
 
   <plone:behavior
     title="Rich Description behavior"
@@ -68,7 +68,7 @@
     factory=".behaviors.RichDescriptionBehavior"
     for="plone.dexterity.interfaces.IDexterityContent"
     marker=".behaviors.IRichDescriptionBehavior"
-    zcml:condition="installed plone.app.contenttypes"
+    zcml:condition="installed plone.dexterity"
   />
 
   <utility
