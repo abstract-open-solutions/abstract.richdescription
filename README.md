@@ -43,6 +43,7 @@ Dependencies
 
 * Plone >= 4.x
 * archetypes.schemaextender
+* plone.dexterity
 
 
 License
