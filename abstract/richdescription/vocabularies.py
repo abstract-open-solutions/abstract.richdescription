@@ -28,15 +28,16 @@ class ArcheTypesVocabulary(object):
             return SimpleVocabulary([])
         items = []
         request = aq_get(ttool, 'REQUEST', None)
+
         for k, v in ttool.items():
             if HAS_DEXTERITY:
                 if IDexterityFTI.providedBy(v):
                     continue
 
-        if k not in BAD_TYPES:
-            items.append(
-                (k, translate(v.Title(), context=request))
-            )
+            if k not in BAD_TYPES:
+                items.append(
+                    (k, translate(v.Title(), context=request))
+                )
 
         items.sort(key=lambda x: x[1])
         items = [SimpleTerm(i[0], i[0], i[1]) for i in items]
