@@ -8,7 +8,6 @@ from zope.event import notify
 from zope.formlib import form
 
 from plone.protect import CheckAuthenticator
-from plone.app.form.validators import null_validator
 from plone.app.controlpanel.form import ControlPanelForm
 from plone.app.controlpanel.events import ConfigurationChangedEvent
 
@@ -81,7 +80,6 @@ class RichDescriptionForm(ControlPanelForm):
             self.status = _p("No changes made.")
 
     @form.action(_p(u'label_cancel', default=u'Cancel'),
-                 validator=null_validator,
                  name=u'cancel')
     def handle_cancel_action(self, action, data):
         IStatusMessage(self.request).addStatusMessage(_p("Changes canceled."),
